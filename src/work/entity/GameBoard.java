@@ -9,7 +9,7 @@ public class GameBoard {
     private Tile[][] board = new Tile[ROWS][COLS];
     private Random random = new Random();
     //元素容器,储存选中元素
-    public ArrayList<Tile> chooseTile;
+    public ArrayList<PointTile> chooseTile;
 
     //初始化格子内元素
     public GameBoard() {
@@ -25,7 +25,7 @@ public class GameBoard {
             }
         }
         //初始化选中容器
-        chooseTile=new ArrayList<Tile>();
+        chooseTile= new ArrayList<>();
     }
 
     //检测所有元素是否可消除并标记
@@ -53,7 +53,7 @@ public class GameBoard {
             else
                 break;
         }
-        for (int c=col;c<=COLS;c++){
+        for (int c=col;c<COLS;c++){
             if (tile.getType()==board[row][c].getType()){
                 countCol++;
                 down++;
@@ -80,7 +80,7 @@ public class GameBoard {
             else
                 break;
         }
-        for (int r=row;r<=ROWS;r++){
+        for (int r=row;r<ROWS;r++){
             if (tile.getType()==board[r][col].getType()){
                 countRow++;
                 right++;
@@ -102,12 +102,34 @@ public class GameBoard {
 
     //每列降下旧元素
     public void dropTiles() {
-
+        //后续优化一下,看得我头痛
+        for (int c=0;c<COLS;c++){
+            for (int r=ROWS-1;r>=0;r--){
+                if (board[r][c].isMatched()){
+                    for (int i=r+1;r>=0;r--){
+                        if (!board[i][c].isMatched()){
+                            //使两者的对象不同
+                            board[r][c]=new Tile(board[i][c].getType());
+                            board[i][c].setMatched(true);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //每列生成新元素
     public void addNewTiles() {
-        // Implement new tile addition logic
+        for (int c=0;c<COLS;c++){
+            for (int r=0;r<ROWS;r++){
+                if (board[r][c].isMatched()){
+                    Type randomType = Type.values()[random.nextInt(Type.values().length)];
+                    board[r][c]=new Tile(randomType);
+                }
+                else
+                    break;
+            }
+        }
     }
 
     //刷新二维元素表直到无可消除元素
@@ -117,6 +139,21 @@ public class GameBoard {
             addNewTiles();
         }
     }
+
+    //交换两个元素
+    public void exchange(){
+        PointTile first= chooseTile.getFirst();
+        PointTile second=chooseTile.getLast();
+        //交换不合法
+
+        //交换合法
+    }
+    //判断是否相邻
+//    private boolean isAdjacent(int row1,int col1,int row2,int col2){
+//        //同行
+//        //同列
+//    }
+
     public Tile[][] getBoard() {
         return board;
     }

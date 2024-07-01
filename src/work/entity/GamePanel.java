@@ -39,10 +39,13 @@ public class GamePanel extends Pane {
         System.out.println(STR."\{row} \{col}");
 
         if (gameBoard.chooseTile.isEmpty()){
-            gameBoard.chooseTile.add(board[row][col]);
+            PointTile pointTile=new PointTile(board[row][col],row,col);
+            gameBoard.chooseTile.add(pointTile);
         }
         if (gameBoard.chooseTile.size()==1){
-
+            PointTile pointTile=new PointTile(board[row][col],row,col);
+            gameBoard.chooseTile.add(pointTile);
+            gameBoard.exchange();
         }
     }
 
