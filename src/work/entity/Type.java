@@ -1,12 +1,12 @@
 package work.entity;
 
 public enum Type {
-    Red(1),
-    Yellow(2),
-    Blue(3),
-    Green(4),
-    Pink(5),
-    Purple(6);
+    Blue(1),
+    Green(2),
+    Pink(3),
+    Purple(4),
+    Red(5),
+    Yellow(6);
     private final int index;
     Type(int index) {
          this.index=index;

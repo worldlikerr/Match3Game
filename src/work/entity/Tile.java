@@ -1,5 +1,5 @@
 package work.entity;
-
+//元素类
 public class Tile {
     private Type type;
     private boolean isMatched;
