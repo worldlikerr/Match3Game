@@ -8,6 +8,7 @@ public class GameBoard {
     public static final int COLS = 8;
     private Tile[][] board = new Tile[ROWS][COLS];
     private Random random = new Random();
+//    public GamePanel gamePanel=GamePanel.getInstance();
     //元素容器,储存选中元素
     public ArrayList<PointTile> chooseTile;
 
@@ -26,6 +27,8 @@ public class GameBoard {
         }
         //初始化选中容器
         chooseTile= new ArrayList<>();
+
+        update();
     }
 
     //检测所有元素是否可消除并标记
@@ -41,6 +44,7 @@ public class GameBoard {
         return isMatch;
     }
     private boolean checkEveryTile(int row,int col){
+
         Tile tile=board[row][col];
         boolean isMatch=false;
         //列
@@ -63,10 +67,10 @@ public class GameBoard {
         }
         if (countCol>2){
             isMatch=true;
-            for (int i=0;i<=up;i++){
+            for (int i=0;i<up;i++){
                 board[row][col-i].setMatched(true);
             }
-            for (int i=0;i<=up;i++){
+            for (int i=0;i<down;i++){
                 board[row][col+i].setMatched(true);
             }
         }
@@ -90,10 +94,10 @@ public class GameBoard {
         }
         if (countRow>2){
             isMatch=true;
-            for (int i=0;i<=left;i--){
+            for (int i=0;i<left;i++){
                 board[row-i][col].setMatched(true);
             }
-            for (int i=0;i<=right;i++){
+            for (int i=0;i<right;i++){
                 board[row+i][col].setMatched(true);
             }
         }
@@ -106,7 +110,7 @@ public class GameBoard {
         for (int c=0;c<COLS;c++){
             for (int r=ROWS-1;r>=0;r--){
                 if (board[r][c].isMatched()){
-                    for (int i=r+1;r>=0;r--){
+                    for (int i=r-1;i>=0;i--){
                         if (!board[i][c].isMatched()){
                             //使两者的对象不同
                             board[r][c]=new Tile(board[i][c].getType());
@@ -134,29 +138,66 @@ public class GameBoard {
 
     //刷新二维元素表直到无可消除元素
     public void update(){
-        while (checkMatches()){
-            dropTiles();
-            addNewTiles();
-        }
+        checkMatches();
+        System.out.println("checkMatches done");
+        dropTiles();
+        System.out.println("dropTiles done");
+        addNewTiles();
+        System.out.println("addNewTiles done");
+//            gamePanel.drawBoard();
+
     }
 
     //交换两个元素
     public void exchange(){
         PointTile first= chooseTile.getFirst();
         PointTile second=chooseTile.getLast();
-        //交换不合法
+        //不相邻
+        if (!isAdjacent(first.getRow(), first.getCol(), second.getRow(), second.getCol())){
+            chooseTile.clear();
+            System.out.println("两个元素不相邻");
+            return;
+        }
+        //交换相同元素
+        if (first.getTile().getType()==second.getTile().getType()){
+            chooseTile.clear();
+            System.out.println("不可交换相同元素");
+            return;
+        }
 
-        //交换合法
+        //相邻
+        if (isAdjacent(first.getRow(), first.getCol(), second.getRow(), second.getCol())){
+            board[first.getRow()][first.getCol()]=new Tile(second.getTile().getType());
+            board[second.getRow()][second.getCol()]=new Tile(first.getTile().getType());
+            //交换后出现可消除元素
+            //
+            if (checkEveryTile(first.getRow(), first.getCol())||checkEveryTile(second.getRow(),second.getCol())){
+                chooseTile.clear();
+                update();
+                System.out.println("交换成功");
+            }
+            //交换后无可消除元素
+            else{
+                board[first.getRow()][first.getCol()]=new Tile(first.getTile().getType());
+                board[second.getRow()][second.getCol()]=new Tile(second.getTile().getType());
+                chooseTile.clear();
+                System.out.println("交换失败");
+            }
+        }
     }
     //判断是否相邻
-//    private boolean isAdjacent(int row1,int col1,int row2,int col2){
-//        //同行
-//        //同列
-//    }
+    private boolean isAdjacent(int row1,int col1,int row2,int col2){
+        //同行
+        if (row1==row2&&Math.abs(col1-col2)==1)
+            return true;
+        //同列
+        if (col1==col2&&Math.abs(row1-row2)==1)
+            return true;
+        return false;
+    }
 
     public Tile[][] getBoard() {
         return board;
     }
-
 }
 

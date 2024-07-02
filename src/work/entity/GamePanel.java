@@ -9,7 +9,13 @@ import javafx.scene.shape.Rectangle;
 public class GamePanel extends Pane {
     //绘制的宽度
     private static final int TILE_SIZE = 40;
-    private GameBoard gameBoard = new GameBoard();
+    private static GameBoard gameBoard = new GameBoard();
+    public static GamePanel instance;
+    public static synchronized GamePanel getInstance(){
+        if (instance==null)
+            instance=new GamePanel();
+        return instance;
+    }
 
     public GamePanel() {
         setPrefSize(GameBoard.COLS * TILE_SIZE, GameBoard.ROWS * TILE_SIZE);
@@ -18,7 +24,7 @@ public class GamePanel extends Pane {
     }
 
     //绘制棋盘与元素
-    private void drawBoard() {
+    public void drawBoard() {
         Tile[][] board = gameBoard.getBoard();
         for (int row = 0; row < GameBoard.ROWS; row++) {
             for (int col = 0; col < GameBoard.COLS; col++) {
@@ -41,15 +47,20 @@ public class GamePanel extends Pane {
         if (gameBoard.chooseTile.isEmpty()){
             PointTile pointTile=new PointTile(board[row][col],row,col);
             gameBoard.chooseTile.add(pointTile);
+            return;
         }
         if (gameBoard.chooseTile.size()==1){
             PointTile pointTile=new PointTile(board[row][col],row,col);
             gameBoard.chooseTile.add(pointTile);
             gameBoard.exchange();
+//            System.out.println("1");
+//            System.out.println(STR."\{gameBoard.chooseTile.getFirst().getTile().getType()}");
+//            System.out.println(STR."\{gameBoard.chooseTile.getLast().getTile().getType()}");
+            drawBoard();
         }
     }
 
-    private Color getColor(int type) {
+    private static Color getColor(int type) {
         return switch (type) {
             case 1 -> Color.BLUE;
             case 2 -> Color.GREEN;
