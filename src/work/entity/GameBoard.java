@@ -139,11 +139,11 @@ public class GameBoard {
     //刷新二维元素表直到无可消除元素
     public void update(){
         checkMatches();
-        System.out.println("checkMatches done");
+//        System.out.println("checkMatches done");
         dropTiles();
-        System.out.println("dropTiles done");
+//        System.out.println("dropTiles done");
         addNewTiles();
-        System.out.println("addNewTiles done");
+//        System.out.println("addNewTiles done");
 //            gamePanel.drawBoard();
 
     }
