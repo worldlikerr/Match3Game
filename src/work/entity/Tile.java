@@ -42,8 +42,7 @@ public class Tile {
             case Green -> "C:\\Users\\death\\IdeaProjects\\Match-3 Game\\src\\work\\gameResource\\image\\block\\green_body_squircle.png";
             case Yellow -> "C:\\Users\\death\\IdeaProjects\\Match-3 Game\\src\\work\\gameResource\\image\\block\\yellow_body_squircle.png";
             case Purple -> "C:\\Users\\death\\IdeaProjects\\Match-3 Game\\src\\work\\gameResource\\image\\block\\purple_body_squircle.png";
-            case Pink -> "C:\\Users\\death\\IdeaProjects\\Match-3 Game\\src\\work\\gameResource\\image\\block\\pink_body_squircle.png";
-            default -> "C:\\Users\\death\\IdeaProjects\\Match-3 Game\\src\\work\\gameResource\\image\\block\\blue_body_squircle.png";
+            default -> "C:\\Users\\death\\IdeaProjects\\Match-3 Game\\src\\work\\gameResource\\image\\block\\pink_body_squircle.png";
         };
 
         Image image = new Image("file:" + imagePath); // 使用 "file:" 前缀加载本地文件
@@ -56,5 +55,6 @@ public class Tile {
         imageView.setFitHeight(GamePanel.TILE_SIZE);
         return imageView;
     }
+
 }
 
