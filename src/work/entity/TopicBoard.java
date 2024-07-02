@@ -12,6 +12,8 @@ public class TopicBoard {
     //元素容器,储存选中元素
     public ArrayList<PointTile> chooseTile;
 
+    public static StarsManager starsManager;
+
     //初始化格子内元素
     public TopicBoard() {
         initializeBoard();
@@ -27,6 +29,8 @@ public class TopicBoard {
         }
         //初始化选中容器
         chooseTile= new ArrayList<>();
+        //初始化
+        starsManager= new StarsManager(4,16,32,56);
 
     }
     //判断三个元素是否相同
@@ -39,6 +43,8 @@ public class TopicBoard {
             board[tile1.getRow()][tile1.getCol()].setMatched(true);
             board[tile2.getRow()][tile2.getCol()].setMatched(true);
             board[tile3.getRow()][tile3.getCol()].setMatched(true);
+
+            StarsManager.points+=3;
         }
         else{
             System.out.println("所选元素不匹配");
@@ -49,4 +55,5 @@ public class TopicBoard {
     public Tile[][] getBoard() {
         return board;
     }
+
 }

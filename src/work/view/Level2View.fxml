@@ -6,5 +6,6 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="work.controller.Level2View">
    <children>
       <Button layoutX="506.0" layoutY="363.0" mnemonicParsing="false" onAction="#Back" prefHeight="23.0" prefWidth="80.0" text="返回" />
+      <Label fx:id="timeRemain" layoutX="492.0" layoutY="14.0" prefHeight="31.0" prefWidth="94.0" />
    </children>
 </AnchorPane>

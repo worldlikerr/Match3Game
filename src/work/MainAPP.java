@@ -3,7 +3,9 @@ package work;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import work.entity.GamePanel;
 import work.entity.TopicPanel;
@@ -18,6 +20,7 @@ public class MainAPP extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
         mainStage=stage;
         Pane gamePane=FXMLLoader.load(getClass().getResource("view/MenuView.fxml"));
         Scene scene=new Scene(gamePane,600,400);
@@ -54,6 +57,23 @@ public class MainAPP extends Application {
         Scene scene=new Scene(root,600,400);
         mainStage.setScene(scene);
         mainStage.show();
+    }
+
+    //消息输出界面
+    public static void toRemindScene(String text) {
+        Stage primaryStage = new Stage();
+        Pane root = new Pane();
+        //设置输出信息
+        Label label = new Label(text);
+        label.setTranslateY(60);
+        label.setTranslateX(50);
+        label.setFont(Font.font(20));
+        //添加输出信息
+        root.getChildren().add(label);
+
+        Scene scene = new Scene(root, 300, 150);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
 }

@@ -6,11 +6,13 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="work.controller.MenuView">
    <children>
-      <Button layoutX="247.0" layoutY="184.0" mnemonicParsing="false" onAction="#ToLevelChooseView" prefHeight="31.0" prefWidth="105.0" text="开始游戏" />
+      <Button layoutX="247.0" layoutY="176.0" mnemonicParsing="false" onAction="#ToLevelChooseView" prefHeight="39.0" prefWidth="106.0" text="开始游戏" />
       <Label layoutX="242.0" layoutY="64.0" prefHeight="39.0" prefWidth="115.0" text="消消乐">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
+      <Button layoutX="246.0" layoutY="240.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="106.0" text="游戏记录" />
+      <Label fx:id="remainPower" layoutX="484.0" layoutY="14.0" prefHeight="19.0" prefWidth="89.0" />
    </children>
 </AnchorPane>
