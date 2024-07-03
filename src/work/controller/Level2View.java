@@ -8,22 +8,24 @@ import javafx.util.Duration;
 import work.MainAPP;
 import work.entity.StarsManager;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Level2View {
     public Label timeRemain;
-    private int timeSeconds = 60;
 
     public void Back(ActionEvent actionEvent) throws Exception {
         MainAPP.setRoot("view/LevelChooseView.fxml","选择界面");
     }
 
     public void initialize() {
+        AtomicInteger timeSeconds= new AtomicInteger(60);
         timeRemain.setText(STR."Time: \{timeSeconds}");
 
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), event -> {
-            timeSeconds--;
+            timeSeconds.getAndDecrement();
             timeRemain.setText(STR."Time: \{timeSeconds}");
 
-            if (timeSeconds==40){
+            if (timeSeconds.get() ==40){
                 StarsManager.getLevel();
                 StarsManager.addPower();
 

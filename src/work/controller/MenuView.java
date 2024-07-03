@@ -18,4 +18,8 @@ public class MenuView {
     public void ToLevelChooseView(ActionEvent actionEvent) throws Exception {
         MainAPP.setRoot("view/LevelChooseView.fxml","关卡选择");
     }
+
+    public void toGameRecordView(ActionEvent actionEvent) throws Exception {
+        MainAPP.setRoot("view/GameRecordView.fxml","游戏记录");
+    }
 }

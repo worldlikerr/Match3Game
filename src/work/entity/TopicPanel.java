@@ -8,7 +8,9 @@ import javafx.scene.layout.Pane;
 public class TopicPanel extends Pane {
     public static final int TILE_SIZE = 40;
     private static TopicBoard topicBoard = new TopicBoard();
+
     public TopicPanel() {
+        topicBoard=new TopicBoard();
         setPrefSize(GameBoard.COLS * TILE_SIZE, GameBoard.ROWS * TILE_SIZE);
         drawBoard();
         setOnMouseClicked(this::handleMouseClick);

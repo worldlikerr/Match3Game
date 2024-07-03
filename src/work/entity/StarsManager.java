@@ -7,6 +7,7 @@ public class StarsManager {
     private static int LEVEL4;
     public static int level;
     public static int points;
+    public static int pass;
 
     public StarsManager(int LEVEL1, int LEVEL2, int LEVEL3, int LEVEL4) {
         StarsManager.LEVEL1 = LEVEL1;
@@ -32,7 +33,7 @@ public class StarsManager {
     }
 
     //结算时调用
-    public static void addPower(){
+    public static int addPower(){
         int power=0;
         power=switch (level){
             case 1-> 0;
@@ -44,5 +45,7 @@ public class StarsManager {
 
         PowerManager powerManager=PowerManager.getInstance();
         powerManager.addPower(power);
+
+        return power;
     }
 }

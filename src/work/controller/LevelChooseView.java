@@ -3,6 +3,7 @@ package work.controller;
 import javafx.event.ActionEvent;
 import work.MainAPP;
 import work.entity.PowerManager;
+import work.entity.StarsManager;
 
 import java.io.IOException;
 
@@ -19,6 +20,8 @@ public class LevelChooseView {
         else {
             powerManager.reducePower(5);
             MainAPP.setRoot("view/Level1View.fxml");
+
+            StarsManager.pass=1;
         }
     }
 
@@ -30,6 +33,8 @@ public class LevelChooseView {
         else {
             powerManager.reducePower(5);
             MainAPP.setTopicRoot("view/Level2View.fxml");
+
+            StarsManager.pass=2;
         }
     }
 }
