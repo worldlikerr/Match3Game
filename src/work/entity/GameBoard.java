@@ -11,6 +11,7 @@ public class GameBoard {
 //    public GamePanel gamePanel=GamePanel.getInstance();
     //元素容器,储存选中元素
     public ArrayList<PointTile> chooseTile;
+    public static StarsManager starsManager;
 
     //初始化格子内元素
     public GameBoard() {
@@ -29,6 +30,9 @@ public class GameBoard {
         chooseTile= new ArrayList<>();
 
         update();
+
+        //
+        starsManager= new StarsManager(500,900,2000,3000);
     }
 
     //检测所有元素是否可消除并标记
@@ -73,6 +77,9 @@ public class GameBoard {
             for (int i=0;i<down;i++){
                 board[row][col+i].setMatched(true);
             }
+
+            //
+            StarsManager.points+=countCol;
         }
         //行
         int left=0,right=0,countRow=0;
@@ -100,6 +107,9 @@ public class GameBoard {
             for (int i=0;i<right;i++){
                 board[row+i][col].setMatched(true);
             }
+
+            //
+            StarsManager.points+=countRow;
         }
         return isMatch;
     }

@@ -4,22 +4,29 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="work.controller.GameResultView" styleClass="anchor-pane-with-background" stylesheets="@../css/GameResult.css">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane-with-background" stylesheets="@../css/GameResult.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="work.controller.GameResultView">
    <children>
-      <Label fx:id="stars" layoutX="214.0" layoutY="139.0" prefHeight="24.0" prefWidth="171.0" />
-      <Label fx:id="points" layoutX="214.0" layoutY="188.0" prefHeight="24.0" prefWidth="171.0" />
+      <Label fx:id="stars" layoutX="214.0" layoutY="115.0" prefHeight="24.0" prefWidth="171.0" text="stars">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Label fx:id="points" layoutX="214.0" layoutY="170.0" prefHeight="24.0" prefWidth="171.0" text="points">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
       <Label layoutX="230.0" layoutY="14.0" prefHeight="44.0" prefWidth="125.0" text="游戏结束">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Button layoutX="261.0" layoutY="310.0" mnemonicParsing="false" onAction="#Back" prefHeight="35.0" prefWidth="62.0" text="返回">
+      <Button layoutX="523.0" layoutY="349.0" mnemonicParsing="false" onAction="#Back" prefHeight="35.0" prefWidth="62.0" text="返回">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Label fx:id="powerReturn" layoutX="214.0" layoutY="250.0" prefHeight="24.0" prefWidth="171.0" />
+      <Label fx:id="powerReturn" layoutX="214.0" layoutY="223.0" prefHeight="24.0" prefWidth="171.0" text="powerReturn">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
    </children>
 </AnchorPane>
