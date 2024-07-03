@@ -18,14 +18,14 @@ public class Level2View {
     }
 
     public void initialize() {
-        AtomicInteger timeSeconds= new AtomicInteger(60);
+        AtomicInteger timeSeconds= new AtomicInteger(30);
         timeRemain.setText(STR."Time: \{timeSeconds}");
 
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), event -> {
             timeSeconds.getAndDecrement();
             timeRemain.setText(STR."Time: \{timeSeconds}");
 
-            if (timeSeconds.get() ==40){
+            if (timeSeconds.get() ==0){
                 StarsManager.getLevel();
                 StarsManager.addPower();
 
