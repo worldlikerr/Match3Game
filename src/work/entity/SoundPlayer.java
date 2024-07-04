@@ -7,7 +7,7 @@ import javafx.scene.media.MediaPlayer;
 public class SoundPlayer {
     private static final Media matchedSound = new Media(SoundPlayer.class.getResource("/work/gameResource/music/Matched.mp3").toString());
     private static final Media notMatchedSound=new Media(SoundPlayer.class.getResource("/work/gameResource/music/NotMatched.mp3").toString());
-    private static final Media backGroundSound=new Media(SoundPlayer.class.getResource("/work/gameResource/music/abbandone.mp3").toString());
+    private static final Media backGroundSound=new Media(SoundPlayer.class.getResource("/work/gameResource/music/bgm.mp3").toString());
     private static MediaPlayer mediaPlayer;
     private static MediaPlayer backGroundSoundPlayer;
 
@@ -24,6 +24,7 @@ public class SoundPlayer {
     public static void playerBackGroundSound(){
         if (backGroundSoundPlayer==null){
             backGroundSoundPlayer=new MediaPlayer(backGroundSound);
+            backGroundSoundPlayer.setCycleCount(MediaPlayer.INDEFINITE); // 循环播放
             backGroundSoundPlayer.play();
         }
     }
