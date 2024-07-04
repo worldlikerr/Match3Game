@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import work.MainAPP;
 import work.entity.PowerManager;
+import work.entity.SoundPlayer;
 
 public class MenuView {
     public Label remainPower;
@@ -13,6 +14,8 @@ public class MenuView {
     public void initialize(){
         PowerManager powerManager=PowerManager.getInstance();
         remainPower.setText(STR."剩余体力:\{powerManager.getPower()}");
+
+        SoundPlayer.playerBackGroundSound();
     }
 
     public void ToLevelChooseView(ActionEvent actionEvent) throws Exception {

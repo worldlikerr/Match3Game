@@ -45,9 +45,15 @@ public class TopicBoard {
             board[tile3.getRow()][tile3.getCol()].setMatched(true);
 
             StarsManager.points+=3;
+
+            //播放音效
+            SoundPlayer.playMatchedSound();
         }
         else{
             System.out.println("所选元素不匹配");
+
+            //播放音效
+            SoundPlayer.playNotMatchedSound();
         }
         chooseTile.clear();
     }
